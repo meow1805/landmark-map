@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+﻿import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Landmark, Region } from '@/types/exhibit';
 import { LandmarkCard } from '@/components/LandmarkCard';
 import { PhilippinesMap } from '@/components/PhilippinesMap';
@@ -118,7 +118,7 @@ export function LandmarkScreen({ landmarks, onSelect, onBack }: LandmarkScreenPr
       <div className="game-grid-overlay" />
       <GameParticles />
 
-      {/* Top bar — always visible */}
+      {/* Top bar. always visible */}
       <div className="w-full pt-4 pb-2 px-4 relative shrink-0 z-10">
         <button
           onClick={isRegionSelected ? handleBack : onBack}
@@ -141,7 +141,7 @@ export function LandmarkScreen({ landmarks, onSelect, onBack }: LandmarkScreenPr
         </div>
       </div>
 
-      {/* Main content — map slides left, cards slide in from right */}
+      {/* Main content. map slides left, cards slide in from right */}
       <div className="flex-1 flex min-h-0 relative">
 
         {/* MAP PANEL: starts centered/full, slides to left 30% */}
@@ -223,7 +223,8 @@ export function LandmarkScreen({ landmarks, onSelect, onBack }: LandmarkScreenPr
                         <img
                           src={activeLandmark.imageUrl}
                           alt={activeLandmark.name}
-                          className="w-full h-full object-cover object-center"
+                          className="w-full h-full object-cover"
+                          style={{ objectPosition: activeLandmark.imageFocus ?? 'center' }}
                           onError={(e) => {
                             const target = e.currentTarget;
                             target.style.display = 'none';

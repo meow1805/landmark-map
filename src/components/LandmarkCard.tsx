@@ -21,7 +21,8 @@ export function LandmarkCard({ landmark, isSelected, onClick }: LandmarkCardProp
       <img
         src={landmark.imageUrl}
         alt={landmark.name}
-        className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        style={{ objectPosition: landmark.imageFocus ?? 'center' }}
         loading="lazy"
         onError={(e) => {
           const target = e.currentTarget;

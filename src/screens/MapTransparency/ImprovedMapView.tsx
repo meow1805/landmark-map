@@ -1,4 +1,4 @@
-import { MapView } from '@/components/MapTransparency/MapView';
+﻿import { MapView } from '@/components/MapTransparency/MapView';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
@@ -10,7 +10,7 @@ type Props = {
 export const ImprovedMapView = ({ onCompare }: Props) => {
   return (
     <div className="container mx-auto max-w-6xl px-4 py-8">
-      <h2 className="text-2xl font-semibold mb-2">Screen 2 — Improved Map View</h2>
+      <h2 className="text-2xl font-semibold mb-2">Screen 2. Improved Map View</h2>
       <p className="text-muted-foreground mb-6">Same map, with expanded information panels</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
@@ -20,7 +20,7 @@ export const ImprovedMapView = ({ onCompare }: Props) => {
 
         <Card>
           <CardHeader>
-            <CardTitle>Intramuros — Information Panels</CardTitle>
+            <CardTitle>Intramuros. Information Panels</CardTitle>
             <CardDescription>Expanded conditions to support informed planning</CardDescription>
           </CardHeader>
           <CardContent>

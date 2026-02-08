@@ -14,7 +14,7 @@ export function useExhibitState() {
   const [currentScreen, setCurrentScreen] = useState<ScreenType>('welcome');
   const [selectedLandmark, setSelectedLandmark] = useState<Landmark | null>(null);
   const [selectedPersona, setSelectedPersona] = useState<Persona | null>(null);
-  const [playerStats, setPlayerStats] = useState<PlayerStats>({ health: 100, stamina: 100, money: 500 });
+  const [playerStats, setPlayerStats] = useState<PlayerStats>({ health: 100, stamina: 100, money: 3000 });
   const [revealedConditions, setRevealedConditions] = useState<RevealedCondition[]>([]);
   const [currentRevealIndex, setCurrentRevealIndex] = useState(0);
 
@@ -78,7 +78,7 @@ export function useExhibitState() {
     setCurrentScreen('welcome');
     setSelectedLandmark(null);
     setSelectedPersona(null);
-    setPlayerStats({ health: 100, stamina: 100, money: 500 });
+    setPlayerStats({ health: 100, stamina: 100, money: 3000 });
     setRevealedConditions([]);
     setCurrentRevealIndex(0);
   }, []);
@@ -95,6 +95,9 @@ export function useExhibitState() {
       case 'planning':
         setSelectedPersona(null);
         setCurrentScreen('persona');
+        break;
+      case 'outcome':
+        setCurrentScreen('reveal');
         break;
       default:
         break;

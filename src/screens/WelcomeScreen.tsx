@@ -36,7 +36,7 @@ export function WelcomeScreen({ onStart }: WelcomeScreenProps) {
               className="exhibit-card p-4 md:p-6 text-center"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-2 md:mb-4">
+              <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-purple-500/10 text-purple-500 flex items-center justify-center mx-auto mb-2 md:mb-4">
                 {step.icon}
               </div>
               <h3 className="font-semibold text-foreground text-sm md:text-base mb-1 md:mb-2">{step.title}</h3>

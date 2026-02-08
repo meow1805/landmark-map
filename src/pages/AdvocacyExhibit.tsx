@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { MapView } from '@/components/MapTransparency/MapView';
 import { PersonaCard } from '@/components/PersonaCard';
@@ -209,13 +209,13 @@ const ExhibitPage = () => {
 
   const header = (
     <div className="mb-8">
-      <div className="step-chip">Interactive Game — Landmark (Leo Donn Araneta)</div>
+      <div className="step-chip">Interactive Game. Landmark (Leo Donn Araneta)</div>
       <h1 className="exhibit-title mt-4">Who Is This Map For? The Cost of Incomplete Information in City Landmarks</h1>
       <p className="mt-3 text-muted-foreground max-w-3xl">
-        City landmarks often rely on digital maps that show only location, hours, and ticket prices. They often do not show long corridors, stair-only access, uneven paths, limited rest areas, or safety concerns. This game shows how missing information affects planning, safety, and experience—and how complete maps help everyone visit safely.
+        City landmarks often rely on digital maps that show only location, hours, and ticket prices. They often do not show long corridors, stair-only access, uneven paths, limited rest areas, or safety concerns. This game shows how missing information affects planning, safety, and experience.and how complete maps help everyone visit safely.
       </p>
       <p className="mt-2 text-sm text-muted-foreground max-w-3xl">
-        <strong>How to play:</strong> Select a landmark, then a persona (student, professor, first-time visitor). See the incomplete map, then navigate the landmark—at each fork choose left, straight, or right. Encounter unmarked stairs, long corridors, and missing rest areas. After the route, see the full updated map with all critical details.
+        <strong>How to play:</strong> Select a landmark, then a persona (student, professor, first-time visitor). See the incomplete map, then navigate the landmark.at each fork choose left, straight, or right. Encounter unmarked stairs, long corridors, and missing rest areas. After the route, see the full updated map with all critical details.
       </p>
     </div>
   );
@@ -285,7 +285,7 @@ const ExhibitPage = () => {
                 <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
                   <div>
                     <div className="text-lg font-semibold">What Google Maps / listings usually show</div>
-                    <div className="text-xs text-muted-foreground">Location • Hours • Ticket price — no stairs, rest areas, or hazards</div>
+                    <div className="text-xs text-muted-foreground">Location • Hours • Ticket price. no stairs, rest areas, or hazards</div>
                   </div>
                   <div className="step-chip">GMaps-style</div>
                 </div>
@@ -336,7 +336,7 @@ const ExhibitPage = () => {
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <div className="text-lg font-semibold">Navigate the landmark</div>
-                    <div className="text-xs text-muted-foreground">You’re at a fork in the road. Choose a path — your character will move, and you’ll discover what the map didn’t show.</div>
+                    <div className="text-xs text-muted-foreground">You’re at a fork in the road. Choose a path. your character will move, and you’ll discover what the map didn’t show.</div>
                   </div>
                   <div className="step-chip">Game</div>
                 </div>
@@ -427,7 +427,7 @@ const ExhibitPage = () => {
                   />
                 </div>
                 <div className="mt-3 text-sm text-muted-foreground">Location • Hours • Ticket price</div>
-                <p className="text-xs text-muted-foreground mt-2">No stairs, no rest areas, no hazards — visitors are left to guess.</p>
+                <p className="text-xs text-muted-foreground mt-2">No stairs, no rest areas, no hazards. visitors are left to guess.</p>
               </div>
               <div className="exhibit-card">
                 <SolutionMap landmarkName={selectedLandmark.name} conditions={obstacles} />

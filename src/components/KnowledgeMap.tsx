@@ -1,4 +1,4 @@
-import type { Persona } from '@/types/exhibit';
+﻿import type { Persona } from '@/types/exhibit';
 import { MapPin, CloudRain, ArrowUpFromLine, Armchair, AlertTriangle, HelpCircle } from 'lucide-react';
 
 interface KnowledgeMapProps {
@@ -58,7 +58,7 @@ export function KnowledgeMap({ persona, landmarkName, rain, obstaclesAhead }: Kn
               {rain && (
                 <div className="flex items-center gap-2 text-foreground">
                   <CloudRain className="w-3.5 h-3.5 shrink-0 text-blue-600" />
-                  <span>Some paths get slippery when rainy — avoid if possible</span>
+                  <span>Some paths get slippery when rainy. avoid if possible</span>
                 </div>
               )}
             </>

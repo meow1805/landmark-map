@@ -1,4 +1,4 @@
-import type { HiddenCondition } from '@/types/exhibit';
+﻿import type { HiddenCondition } from '@/types/exhibit';
 import { ArrowUpFromLine, MapPin, Armchair, Sun, AlertTriangle, Car, Heart } from 'lucide-react';
 
 interface SolutionMapProps {
@@ -31,7 +31,7 @@ export function SolutionMap({ landmarkName, conditions }: SolutionMapProps) {
         <Heart className="w-5 h-5 text-primary shrink-0" />
         <div>
           <div className="font-semibold text-foreground">Complete map: what everyone should see</div>
-          <div className="text-xs text-muted-foreground">{landmarkName} — hazards, rest areas, and safety info</div>
+          <div className="text-xs text-muted-foreground">{landmarkName}. hazards, rest areas, and safety info</div>
         </div>
       </div>
       <div className="solution-map-paper">

@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
-import { Landmark, Persona, CharacterConfig, HairColor, SkinTone, BudgetLevel, HealthCondition, Gender, MaleHairStyle, FemaleHairStyle, GlassesStyle, HatStyle, AccessoryStyle, ClothingStyle } from '@/types/exhibit';
+import { Landmark, Persona, CharacterConfig, HairColor, SkinTone, BudgetLevel, HealthCondition, Gender, MaleHairStyle, FemaleHairStyle, GlassesStyle, AccessoryStyle, ClothingStyle } from '@/types/exhibit';
 import { ExhibitHeader } from '@/components/ExhibitHeader';
 import { CharacterAvatar } from '@/components/CharacterAvatar';
 import { Button } from '@/components/ui/button';
@@ -30,15 +30,20 @@ const SKIN_OPTIONS: { value: SkinTone; label: string; color: string }[] = [
 ];
 
 const MALE_HAIR_STYLES: { value: MaleHairStyle; label: string; icon: string }[] = [
-  { value: 'normal', label: 'Crew Cut', icon: '💇‍♂️' },
-  { value: 'thick', label: 'Quiff', icon: '🧑' },
-  { value: 'mohawk', label: 'Mohawk', icon: '🤘' },
+  { value: 'fonze', label: 'Slicked Back', icon: '💈' },
+  { value: 'dougFunny', label: 'Wispy', icon: '〰️' },
+  { value: 'mrT', label: 'Mohawk', icon: '🦅' },
+  { value: 'turban', label: 'Turban', icon: '🧕' },
+  { value: 'mrClean', label: 'Bald', icon: '🥚' },
 ];
 
 const FEMALE_HAIR_STYLES: { value: FemaleHairStyle; label: string; icon: string }[] = [
-  { value: 'womanLong', label: 'Long', icon: '💇‍♀️' },
-  { value: 'womanShort', label: 'Bob', icon: '👩' },
-  { value: 'normal', label: 'Pixie', icon: '✂️' },
+  { value: 'pixie', label: 'Pixie', icon: '✂️' },
+  { value: 'full', label: 'Full', icon: '💇‍♀️' },
+  { value: 'dougFunny', label: 'Wispy', icon: '〰️' },
+  { value: 'mrT', label: 'Mohawk', icon: '🦅' },
+  { value: 'turban', label: 'Turban', icon: '🧕' },
+  { value: 'mrClean', label: 'Bald', icon: '🥚' },
 ];
 
 const GLASSES_OPTIONS: { value: GlassesStyle; label: string; icon: string }[] = [
@@ -47,18 +52,10 @@ const GLASSES_OPTIONS: { value: GlassesStyle; label: string; icon: string }[] = 
   { value: 'square', label: 'Square', icon: '🕶️' },
 ];
 
-const HAT_OPTIONS: { value: HatStyle; label: string; icon: string }[] = [
-  { value: 'none', label: 'None', icon: '🚫' },
-  { value: 'beanie', label: 'Beanie', icon: '🧢' },
-  { value: 'turban', label: 'Turban', icon: '🧕' },
-];
-
 const ACCESSORY_OPTIONS: { value: AccessoryStyle; label: string; icon: string }[] = [
   { value: 'none', label: 'None', icon: '🚫' },
-  { value: 'earrings', label: 'Earrings', icon: '💍' },
-  { value: 'headphones', label: 'Headphones', icon: '🎧' },
-  { value: 'scar', label: 'Scar', icon: '⚔️' },
-  { value: 'bandana', label: 'Bandana', icon: '🎀' },
+  { value: 'hoop', label: 'Hoop Earrings', icon: '⭕' },
+  { value: 'stud', label: 'Stud Earrings', icon: '💎' },
 ];
 
 const CLOTHING_OPTIONS: { value: ClothingStyle; label: string; icon: string; desc: string }[] = [
@@ -87,16 +84,16 @@ const CONDITION_OPTIONS: { value: HealthCondition; label: string; icon: string; 
 ];
 
 const RANDOM_PRESETS: CharacterConfig[] = [
-  { name: 'Lola Carmen', age: 72, gender: 'female', hairColor: 'white', skinTone: 'tan', hairStyle: 'womanShort', glassesStyle: 'round', hatStyle: 'none', accessoryStyle: 'earrings', clothingStyle: 'pambahay', budget: 'moderate', conditions: ['arthritis', 'heat-sensitivity', 'poor-eyesight'] },
-  { name: 'Mark', age: 28, gender: 'male', hairColor: 'black', skinTone: 'brown', hairStyle: 'normal', glassesStyle: 'none', hatStyle: 'none', accessoryStyle: 'headphones', clothingStyle: 'casual', budget: 'backpacker', conditions: ['asthma'] },
-  { name: 'Sofia', age: 19, gender: 'female', hairColor: 'brown', skinTone: 'medium', hairStyle: 'womanLong', glassesStyle: 'none', hatStyle: 'none', accessoryStyle: 'earrings', clothingStyle: 'casual', budget: 'backpacker', conditions: [] },
-  { name: 'Dr. Santos', age: 55, gender: 'male', hairColor: 'gray', skinTone: 'tan', hairStyle: 'normal', glassesStyle: 'square', hatStyle: 'none', accessoryStyle: 'none', clothingStyle: 'formal', budget: 'comfortable', conditions: ['heart-condition'] },
-  { name: 'Rico', age: 21, gender: 'male', hairColor: 'black', skinTone: 'brown', hairStyle: 'mohawk', glassesStyle: 'none', hatStyle: 'beanie', accessoryStyle: 'scar', clothingStyle: 'sporty', budget: 'backpacker', conditions: [] },
-  { name: 'Tita Beth', age: 63, gender: 'female', hairColor: 'white', skinTone: 'medium', hairStyle: 'womanShort', glassesStyle: 'round', hatStyle: 'turban', accessoryStyle: 'earrings', clothingStyle: 'formal', budget: 'luxury', conditions: ['vertigo', 'arthritis'] },
-  { name: 'Jun', age: 35, gender: 'male', hairColor: 'black', skinTone: 'dark', hairStyle: 'thick', glassesStyle: 'none', hatStyle: 'none', accessoryStyle: 'none', clothingStyle: 'pambahay', budget: 'moderate', conditions: ['chronic-fatigue'] },
-  { name: 'Mia', age: 8, gender: 'female', hairColor: 'black', skinTone: 'tan', hairStyle: 'womanLong', glassesStyle: 'none', hatStyle: 'none', accessoryStyle: 'bandana', clothingStyle: 'casual', budget: 'moderate', conditions: ['asthma'] },
-  { name: 'David', age: 30, gender: 'male', hairColor: 'blonde', skinTone: 'light', hairStyle: 'normal', glassesStyle: 'square', hatStyle: 'none', accessoryStyle: 'headphones', clothingStyle: 'casual', budget: 'comfortable', conditions: ['heat-sensitivity', 'poor-eyesight'] },
-  { name: 'Nanay Linda', age: 68, gender: 'female', hairColor: 'white', skinTone: 'brown', hairStyle: 'womanShort', glassesStyle: 'round', hatStyle: 'none', accessoryStyle: 'none', clothingStyle: 'pambahay', budget: 'moderate', conditions: ['mobility-impairment', 'heart-condition', 'poor-eyesight'] },
+  { name: 'Lola Carmen', age: 72, gender: 'female', hairColor: 'white', skinTone: 'tan', hairStyle: 'pixie', glassesStyle: 'round', hatStyle: 'none', accessoryStyle: 'stud', clothingStyle: 'pambahay', budget: 'moderate', conditions: ['arthritis', 'heat-sensitivity', 'poor-eyesight'] },
+  { name: 'Mark', age: 28, gender: 'male', hairColor: 'black', skinTone: 'brown', hairStyle: 'fonze', glassesStyle: 'none', hatStyle: 'none', accessoryStyle: 'none', clothingStyle: 'casual', budget: 'backpacker', conditions: ['asthma'] },
+  { name: 'Sofia', age: 19, gender: 'female', hairColor: 'brown', skinTone: 'medium', hairStyle: 'full', glassesStyle: 'none', hatStyle: 'none', accessoryStyle: 'hoop', clothingStyle: 'casual', budget: 'backpacker', conditions: [] },
+  { name: 'Dr. Santos', age: 55, gender: 'male', hairColor: 'gray', skinTone: 'tan', hairStyle: 'fonze', glassesStyle: 'square', hatStyle: 'none', accessoryStyle: 'none', clothingStyle: 'formal', budget: 'comfortable', conditions: ['heart-condition'] },
+  { name: 'Rico', age: 21, gender: 'male', hairColor: 'black', skinTone: 'brown', hairStyle: 'mrT', glassesStyle: 'none', hatStyle: 'none', accessoryStyle: 'none', clothingStyle: 'sporty', budget: 'backpacker', conditions: [] },
+  { name: 'Tita Beth', age: 63, gender: 'female', hairColor: 'white', skinTone: 'medium', hairStyle: 'turban', glassesStyle: 'round', hatStyle: 'none', accessoryStyle: 'stud', clothingStyle: 'formal', budget: 'luxury', conditions: ['vertigo', 'arthritis'] },
+  { name: 'Jun', age: 35, gender: 'male', hairColor: 'black', skinTone: 'dark', hairStyle: 'dougFunny', glassesStyle: 'none', hatStyle: 'none', accessoryStyle: 'none', clothingStyle: 'pambahay', budget: 'moderate', conditions: ['chronic-fatigue'] },
+  { name: 'Mia', age: 8, gender: 'female', hairColor: 'black', skinTone: 'tan', hairStyle: 'dougFunny', glassesStyle: 'none', hatStyle: 'none', accessoryStyle: 'none', clothingStyle: 'casual', budget: 'moderate', conditions: ['asthma'] },
+  { name: 'David', age: 30, gender: 'male', hairColor: 'blonde', skinTone: 'light', hairStyle: 'turban', glassesStyle: 'square', hatStyle: 'none', accessoryStyle: 'none', clothingStyle: 'casual', budget: 'comfortable', conditions: ['heat-sensitivity', 'poor-eyesight'] },
+  { name: 'Nanay Linda', age: 68, gender: 'female', hairColor: 'white', skinTone: 'brown', hairStyle: 'dougFunny', glassesStyle: 'round', hatStyle: 'none', accessoryStyle: 'none', clothingStyle: 'pambahay', budget: 'moderate', conditions: ['mobility-impairment', 'heart-condition', 'poor-eyesight'] },
 ];
 
 function buildPersonaFromConfig(config: CharacterConfig): Persona {
@@ -164,7 +161,7 @@ export function PersonaScreen({ landmark, onSelect, onBack }: PersonaScreenProps
     gender: 'male',
     hairColor: 'black',
     skinTone: 'tan',
-    hairStyle: 'normal',
+    hairStyle: 'fonze',
     glassesStyle: 'none',
     hatStyle: 'none',
     accessoryStyle: 'none',
@@ -180,7 +177,7 @@ export function PersonaScreen({ landmark, onSelect, onBack }: PersonaScreenProps
       const next = { ...prev, [key]: value };
       // When gender changes, reset hairStyle to valid option for that gender
       if (key === 'gender') {
-        next.hairStyle = value === 'female' ? 'womanLong' : 'normal';
+        next.hairStyle = value === 'female' ? 'pixie' : 'fonze';
       }
       // When age crosses into senior (60+), auto-suggest white hair (still changeable)
       if (key === 'age' && typeof value === 'number') {
@@ -391,26 +388,6 @@ export function PersonaScreen({ landmark, onSelect, onBack }: PersonaScreenProps
             </div>
           </div>
 
-          {/* Headwear */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Headwear</label>
-            <div className="flex gap-2 flex-wrap">
-              {HAT_OPTIONS.map(opt => (
-                <button
-                  key={opt.value}
-                  onClick={() => updateField('hatStyle', opt.value)}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-medium transition-all
-                    ${config.hatStyle === opt.value
-                      ? 'border-purple-500 bg-purple-500/20 text-foreground ring-1 ring-purple-500/40'
-                      : 'border-white/10 bg-white/5 text-muted-foreground hover:bg-white/10'}`}
-                >
-                  <span className="text-base">{opt.icon}</span>
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
           {/* Accessories */}
           <div className="space-y-1.5">
             <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Accessories</label>
@@ -609,7 +586,8 @@ export function PersonaScreen({ landmark, onSelect, onBack }: PersonaScreenProps
             {/* Continue Button */}
             <Button
               className="w-full py-6 text-base font-bold rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 
-                hover:from-purple-500 hover:to-pink-500 shadow-lg shadow-purple-500/25 transition-all
+                hover:from-purple-500 hover:to-pink-500 active:from-purple-700 active:to-pink-700 active:scale-95
+                shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all
                 disabled:opacity-30 disabled:cursor-not-allowed disabled:shadow-none"
               disabled={!isValid}
               onClick={() => onSelect(persona)}

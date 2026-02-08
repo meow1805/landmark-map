@@ -7,6 +7,8 @@ export interface Landmark {
   region: Region;
   description: string;
   imageUrl: string;
+  /** CSS object-position override for image cropping (default: 'center'). */
+  imageFocus?: string;
   /** [lat, lng] for map view (e.g. GMaps-style). */
   mapCenter?: [number, number];
   mapZoom?: number;
@@ -39,12 +41,12 @@ export type Gender = 'male' | 'female';
 export type HealthCondition = 'asthma' | 'arthritis' | 'heart-condition' | 'chronic-fatigue' | 'vertigo' | 'heat-sensitivity' | 'poor-eyesight' | 'mobility-impairment';
 export type BudgetLevel = 'backpacker' | 'moderate' | 'comfortable' | 'luxury';
 
-export type MaleHairStyle = 'normal' | 'thick' | 'mohawk';
-export type FemaleHairStyle = 'womanLong' | 'womanShort' | 'normal';
-export type HairStyle = MaleHairStyle | FemaleHairStyle;
+export type HairStyle = 'dannyPhantom' | 'dougFunny' | 'fonze' | 'full' | 'mrClean' | 'mrT' | 'pixie' | 'turban';
+export type MaleHairStyle = HairStyle;
+export type FemaleHairStyle = HairStyle;
 export type GlassesStyle = 'none' | 'round' | 'square';
-export type HatStyle = 'none' | 'beanie' | 'turban';
-export type AccessoryStyle = 'none' | 'earrings' | 'headphones' | 'scar' | 'bandana';
+export type HatStyle = 'none';
+export type AccessoryStyle = 'none' | 'hoop' | 'stud';
 export type ClothingStyle = 'pambahay' | 'casual' | 'formal' | 'sporty';
 
 export interface CharacterConfig {

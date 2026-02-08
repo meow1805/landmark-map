@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback, useState } from 'react';
+﻿import { useRef, useEffect, useCallback, useState } from 'react';
 import { Region, Landmark } from '@/types/exhibit';
 import svgRaw from '@/assets/philippines.svg?raw';
 
@@ -286,7 +286,7 @@ export function PhilippinesMap({
       const { x, y } = geoToSvg(lm.mapCenter[0], lm.mapCenter[1]);
       const isHighlighted = highlightedLandmark === lm.id;
 
-      // Pin dimensions — shrink non-highlighted pins when zoomed to a landmark
+      // Pin dimensions. shrink non-highlighted pins when zoomed to a landmark
       const isZoomed = !!highlightedLandmark;
       const r = isHighlighted ? 8 : (isZoomed ? 3 : 6);
       const h = r * 2;
@@ -332,7 +332,7 @@ export function PhilippinesMap({
 
       // Tooltip
       const title = document.createElementNS(svgNS, 'title');
-      title.textContent = `${lm.name} — ${lm.location}`;
+      title.textContent = `${lm.name}. ${lm.location}`;
       pin.appendChild(title);
 
       // Hit area (invisible larger circle for easier clicking)

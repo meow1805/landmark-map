@@ -1,4 +1,4 @@
-import { Landmark, Persona, PlayerStats } from '@/types/exhibit';
+﻿import { Landmark, Persona, PlayerStats } from '@/types/exhibit';
 import { ExhibitHeader } from '@/components/ExhibitHeader';
 import { CharacterAvatar } from '@/components/CharacterAvatar';
 import { StatBar } from '@/components/StatBar';
@@ -73,7 +73,7 @@ export function PlanningScreen({ landmark, persona, stats, onStart, onBack }: Pl
         {/* Right: Big Google Maps phone-style view */}
         <div className="flex-1 min-w-0">
           <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden">
-            {/* Google Maps embed — tall like a phone map */}
+            {/* Google Maps embed. tall like a phone map */}
             <div className="relative overflow-hidden" style={{ height: 'clamp(320px, 55vh, 520px)' }}>
               <iframe
                 title={`Map of ${landmark.name}`}

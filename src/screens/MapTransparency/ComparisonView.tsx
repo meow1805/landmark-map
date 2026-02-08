@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+﻿import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
 type Props = {
   decision: 'safe' | 'unsure' | 'unprepared';
@@ -18,7 +18,7 @@ export const ComparisonView = ({ decision }: Props) => {
 
   return (
     <div className="container mx-auto max-w-6xl px-4 py-8">
-      <h2 className="text-2xl font-semibold mb-2">Screen 3 — Comparison View</h2>
+      <h2 className="text-2xl font-semibold mb-2">Screen 3. Comparison View</h2>
       <p className="text-muted-foreground mb-6">Clear visual comparison of typical vs improved information</p>
 
       <Card>

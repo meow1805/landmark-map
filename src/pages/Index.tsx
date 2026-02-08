@@ -95,6 +95,7 @@ const Index = () => {
             }}
             revealedConditions={revealedConditions}
             onReset={resetExhibit}
+            onBack={goBack}
           />
         ) : null;
 

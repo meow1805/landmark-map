@@ -1,4 +1,4 @@
-import { MapView } from '@/components/MapTransparency/MapView';
+﻿import { MapView } from '@/components/MapTransparency/MapView';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -9,8 +9,8 @@ type Props = {
 export const IncompleteMapView = ({ onDecide }: Props) => {
   return (
     <div className="container mx-auto max-w-6xl px-4 py-8">
-      <h1 className="text-2xl font-semibold mb-2">Map or Reality? — Philippine Landmark Map Transparency Demo</h1>
-      <p className="text-muted-foreground mb-6">Screen 1 — Incomplete Map View</p>
+      <h1 className="text-2xl font-semibold mb-2">Map or Reality?. Philippine Landmark Map Transparency Demo</h1>
+      <p className="text-muted-foreground mb-6">Screen 1. Incomplete Map View</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
         <div>
